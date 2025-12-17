@@ -166,3 +166,16 @@ kubectl get secret argocd-initial-admin-secret -n argocd \
 https://<EXTERNAL-IP>
 ```
 
+---
+
+##  Check the Resources and limits
+
+
+```
+ubectl get pods -n argocd \
+  -o=custom-columns=PO:.metadata.name,CONTAINER:.spec.containers[*].name,\
+REQ_CPU:.spec.containers[*].resources.requests.cpu,REQ_MEM:.spec.containers[*].resources.requests.memory,\
+LIM_CPU:.spec.containers[*].resources.limits.cpu,LIM_MEM:.spec.containers[*].resources.limits.memory
+
+```
+

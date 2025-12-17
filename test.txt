@@ -14,3 +14,9 @@ kubectl patch svc argocd-server -n argocd \
 
 kubectl get secret argocd-initial-admin-secret -n argocd \
   -o jsonpath="{.data.password}" | base64 --decode && echo
+  
+
+kubectl get pods -n argocd \
+  -o=custom-columns=PO:.metadata.name,CONTAINER:.spec.containers[*].name,\
+REQ_CPU:.spec.containers[*].resources.requests.cpu,REQ_MEM:.spec.containers[*].resources.requests.memory,\
+LIM_CPU:.spec.containers[*].resources.limits.cpu,LIM_MEM:.spec.containers[*].resources.limits.memory
