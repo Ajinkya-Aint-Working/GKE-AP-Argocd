@@ -41,10 +41,9 @@ controller:
       cpu: 200m
       memory: 512Mi
 
-# 🔐 Redis with custom password (stable)
 redis:
   enabled: true
-  
+
   resources:
     requests:
       cpu: 100m
